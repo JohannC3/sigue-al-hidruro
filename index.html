@@ -2,8 +2,8 @@
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Sigue al hidruro · Cannizzaro</title>
 <style>
-:root{--bg:#F2F5F7;--ink:#13222C;--mute:#566872;--card:#fff;--line:#C9D4DA;--h:#C2185B;--oh:#0B7A75;--ok:#17703F;--bad:#B3261E}
-@media(prefers-color-scheme:dark){:root{--bg:#0E1A22;--ink:#E4ECF0;--mute:#93A4AE;--card:#16252F;--line:#2B3D49;--h:#FF6FB0;--oh:#3CC8C0;--ok:#5FD18F;--bad:#FF8A80}}
+:root{--bg:#F2F5F7;--ink:#13222C;--mute:#566872;--card:#fff;--line:#C9D4DA;--h:#C2185B;--oh:#0B7A75;--ok:#17703F;--bad:#B3261E;--in:#3949AB;--am:#B26A00}
+@media(prefers-color-scheme:dark){:root{--bg:#0E1A22;--ink:#E4ECF0;--mute:#93A4AE;--card:#16252F;--line:#2B3D49;--h:#FF6FB0;--oh:#3CC8C0;--ok:#5FD18F;--bad:#FF8A80;--in:#9FA8FF;--am:#FFB74D}}
 *{box-sizing:border-box}[hidden]{display:none!important}
 html,body{margin:0;background:var(--bg);color:var(--ink)}
 body{font:17px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
@@ -26,12 +26,25 @@ canvas{width:100%;height:auto;display:block;background:var(--card);border:1.5px 
 .box ul{margin:6px 0;padding-left:20px}.box li{margin:4px 0}
 .t{color:var(--oh);font-weight:700}
 .box h3{font:700 18px Georgia,serif;margin:14px 0 4px}
+.box table{border-collapse:collapse;margin:8px 0;max-width:100%}.box td,.box th{border:1.5px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
 .fm{font:700 clamp(20px,3.4vw,28px)/1.3 Georgia,serif;margin:10px 0}
+body{background:radial-gradient(900px 380px at 100% -5%,rgba(194,24,91,.10),transparent),radial-gradient(900px 380px at -5% 0,rgba(11,122,117,.10),transparent),var(--bg)}
+.hd{display:flex;gap:16px;align-items:center;padding:14px 22px;border-radius:16px;color:#fff;margin:4px 0 14px;box-shadow:0 6px 18px rgba(0,0,0,.16)}
+.nn{font:700 52px/1 Georgia,serif;opacity:.92}.tt{font:700 26px/1.2 Georgia,serif}.tg{opacity:.95;font-size:16px}
+#p5 h2,#p6 h2,#p7 h2{display:none}
+nav button{border-bottom:4px solid var(--c,var(--line))}
+nav button:nth-child(1){--c:#6D4AFF}nav button:nth-child(2){--c:#C2185B}nav button:nth-child(3){--c:#0B7A75}nav button:nth-child(4){--c:#3949AB}nav button:nth-child(5){--c:#B26A00}nav button:nth-child(6){--c:#2E7D32}nav button:nth-child(7){--c:#D81B60}nav button:nth-child(8){--c:#1565C0}nav button:nth-child(9){--c:#00897B}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:8px 0}
+.cd{background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:8px 10px}.cd svg{border:0;background:none}.cd p{margin:4px 0;font-size:15px;color:var(--mute)}
+.cp{display:inline-block;padding:4px 12px;border-radius:999px;font-weight:600;font-size:15px;margin:3px 4px 3px 0}
+.stt{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0}.sc{flex:1;min-width:150px;border-radius:12px;padding:10px 14px;color:#fff;font-size:15px}.big{font:700 28px Georgia,serif}
+details summary{cursor:pointer}.box{box-shadow:0 2px 10px rgba(0,0,0,.06)}
 </style></head><body><div class="w">
-<h1>Sigue al hidruro</h1>
+<h1>Sigue al <span class="h">hidruro</span></h1>
 <p class="sub">Cannizzaro: de dos aldehídos salen un ácido y un alcohol. Lo único que viaja es un <span class="h">H⁻</span>. Teclas ← → para avanzar.</p>
-<nav><button id="t1" class="on">Simulador</button><button id="t2">Reto para el grupo</button></nav>
+<nav></nav>
 
+<div class="hd" id="hd"></div>
 <section id="p1">
 <div class="row" id="tyb"></div>
 <div class="fm" id="sch" style="font-size:20px"></div>
@@ -57,7 +70,7 @@ canvas{width:100%;height:auto;display:block;background:var(--card);border:1.5px 
 <div class="row" id="apc"></div><div class="fm" id="apf"></div><div id="apb"></div>
 <div class="row"><button id="apk">← Atrás</button><button id="apn" class="on">Siguiente →</button><button id="app">Practicar en el reto</button></div></div></section>
 <section id="p7" hidden><div class="box"><h2>7 · En el aula: el partido de los gemelos</h2>
-<p class="sub">¿Cómo enseñar esto a quien lo ve por primera vez? Con un partido: la pelota es el hidruro. Avanza por los pasos y compara «Analogía» con «Química».</p>
+<p class="sub">Para entender la Cannizzaro como un partido: la pelota es el hidruro. Avanza por los pasos y compara «Analogía» con «Química».</p>
 <div class="row"><label>Escenario <select id="twm"><option value="0">Dos gemelos idénticos (Cannizzaro)</option><option value="1">Invitado: formaldehído (cruzada)</option><option value="2">Gemelos distraídos (H en α → aldol)</option></select></label></div>
 <svg id="tw" viewBox="0 0 760 360" role="img" aria-label="Analogía del partido de los gemelos"></svg>
 <div id="tws" class="row"></div><div id="twp" class="row"></div>
@@ -67,8 +80,20 @@ canvas{width:100%;height:auto;display:block;background:var(--card);border:1.5px 
 <ul><li><b>Gemelos</b> = dos moléculas de aldehído; <b>pelota</b> = hidruro H⁻ con sus 2 e⁻ (las pegatinas).</li><li><b>Guante abierto</b> = C=O con δ+; <b>casco</b> = OH⁻ ya unido (O⁻ tetraédrico).</li><li><b>Lanzar</b> = transferencia del hidruro; <b>tarjeta H⁺</b> = transferencia de protón.</li><li><b>Sin pelota / con dos</b> = oxidado (ácido) / reducido (alcohol).</li><li><b>Distraídos</b> = H en α (aldol); <b>invitado</b> = formaldehído, el más expuesto y menos impedido.</li></ul>
 <h3>Dónde falla la analogía</h3>
 <ul><li>En la química nadie «elige»: lanza quien forma antes el aducto con OH⁻ (en la cruzada, el HCHO).</li><li>La pelota es un hidruro con 2 electrones, no un átomo de H.</li><li>La pelota sale del propio aldehído, nunca del agua (deuterio, nivel 3 del reto).</li></ul>
-<h3>Para usarla en el aula (90 s)</h3>
-<ol><li>Antes del lanzamiento, pide que predigan las pelotas finales (botones de predicción).</li><li>Lanza y pregunta por qué la suma redox no cambia.</li><li>Cambia a «distraídos» y a «invitado»: ¿qué cambia y por qué?</li></ol>
+</div></section>
+<section id="p9" hidden><div class="box">
+<p class="sub">Modelo didáctico cualitativo (no son datos experimentales): mueve las variables y observa el matraz, las curvas y los espectros a la vez.</p>
+<div class="row" id="lbt"></div>
+<div class="row"><label>Aldehído <select id="lbs"></select></label><label>Ventana de tiempo <select id="lbw"><option value="5">5 min</option><option value="30">30 min</option><option value="180" selected>3 h</option><option value="1440">24 h</option></select></label><label>Versión <select id="lbm"><option value="0">Simple (2 ArCHO)</option><option value="1">Cruzada (+ HCHO en exceso)</option></select></label></div>
+<div class="row"><label>[NaOH] <input type="range" id="lbo" min="1" max="10" step=".5" value="5"> <b id="lbov"></b></label><label>T <input type="range" id="lbT" min="20" max="100" step="5" value="25"> <b id="lbTv"></b></label><label>ρ <input type="range" id="lbr" min="0" max="2" step=".25" value="1"> <b id="lbrv"></b></label></div>
+<div id="lb0"><div class="row" id="lbxs"></div><div class="box" id="lbex">Elige un experimento: cada uno cambia una sola variable y la compara con la curva punteada.</div><div class="g"><canvas id="lbf" role="img" aria-label="Matraz en 3D con moléculas; arrastra para girar y toca una molécula para identificarla"></canvas><canvas id="lbp" role="img" aria-label="Gráfica de fracciones frente al tiempo"></canvas></div>
+<div class="row"><button id="lbpl" class="on">▶ Reproducir</button><input type="range" id="lbtm" min="0" max="1000" value="0" style="flex:1;min-width:140px" aria-label="Tiempo"><label><input type="checkbox" id="lbau" checked> Girar solo</label><span id="lbx" class="sub"></span></div>
+<div class="box" id="lbtx"></div><div id="lbn"></div></div>
+<div id="lb1" hidden><p class="sub">¹H-RMN de la mezcla (δ aproximados; verifícalos en una base de datos como SDBS). La integral del anillo (Ar) no cambia: es la referencia interna.</p><canvas id="lbsp" role="img" aria-label="Espectro de RMN de protón simulado"></canvas>
+<div class="row"><label><input type="checkbox" id="lbd"> Aldehído deuterado (ArCDO)</label><label><input type="checkbox" id="lba"> Acidificar la muestra</label></div><div class="box" id="lbsn"></div>
+<h3>Placa de TLC (Rf ilustrativos)</h3><canvas id="lbtl" role="img" aria-label="Placa de cromatografía en capa fina" style="max-width:340px"></canvas></div>
+<div id="lb2" hidden><svg id="lbis" viewBox="0 0 520 290" role="img" aria-label="Aislamiento con embudo de decantación"></svg><div class="row"><button id="lbik">← Atrás</button><button id="lbin" class="on">Siguiente →</button></div><div class="box" id="lbic" aria-live="polite"></div></div>
+<div id="lb3" hidden><div class="row"><label>Aldehído a usar <input type="range" id="lbg1" min="1" max="100" value="10"> <b id="lbg1v"></b></label><label>Quiero obtener <select id="lbg2"><option value="0">Solo el alcohol</option><option value="1">Alcohol y el otro producto</option></select></label></div><div id="lbg"></div></div>
 </div></section>
 <section id="px" hidden><div class="box" id="pxb"></div></section>
 <p class="sub">Base: Chatterjee, Mondal y Bera, Beilstein J. Org. Chem. 2024, 20, 1376–1395 (Fig. 1; Esq. 22 y 23). El simulador dibuja el grupo funcional con un R genérico.</p>
@@ -78,7 +103,7 @@ const $=s=>document.querySelector(s),M=n=>(n>0?'+':n<0?'−':'')+Math.abs(n);
 const A=[{n:'Benzaldehído',r:'Ph'},{n:'p-Nitrobenzaldehído',r:'p-O₂N-Ph'},{n:'p-Anisaldehído',r:'p-MeO-Ph'},{n:'Pivalaldehído',r:'t-Bu'},
 {n:'Isobutiraldehído',r:'i-Pr',al:1,pr:'neopentilglicol (2,2-dimetil-1,3-propanodiol)'},
 {n:'Acetaldehído',r:'CH₃',al:1,pr:'pentaeritritol (tres aldoles seguidos y un Cannizzaro cruzado)'},{n:'Formaldehído',r:'H'}];
-let sel=0,cr=false,ty=0,S=0,raf,qi=0;
+let sel=0,cr=false,ty=0,S=0,raf,qi=0,SCO={};
 const inf=()=>{if(ty===2)return{a:{n:'o-Ftalaldehído',r:'',al:0},f:0,cr:0,ty:2,D:'',B:'',dn:'CHO donador'};const a=A[sel],f=a.r==='H',x=ty===1&&!f;return{a,f,cr:x,ty,D:x||f?'H':a.r,B:a.r,dn:x||f?'Formaldehído':a.n}};
 const L=(a,b,c,d)=>`<line x1="${a}" y1="${b}" x2="${c}" y2="${d}" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>`;
 const T=(x,y,t,c,an,z)=>`<text x="${x}" y="${y}" text-anchor="${an||'middle'}" fill="${c||'var(--ink)'}" font-size="${z||22}">${t}</text>`;
@@ -143,9 +168,9 @@ function scene(s,done){if(ty===2)return sceneI(s,done);
  if(s===2||s===3){g+=`<path id="hp" d="M${dx+52} ${cy+40}C${dx+120} ${cy-220} ${bx-60} ${cy-220} ${bx+30} ${cy-14}" fill="none" stroke="var(--h)" stroke-width="3" stroke-dasharray="${s===3&&!done?'7 6':'none'}" marker-end="url(#am)"/>`;
   if(!(s===3&&done))g+=ar(`M${dx-14} ${cy-70}Q${dx-34} ${cy-42} ${dx-6} ${cy-30}`,'--ink','ai')+push(bx);
   if(s===3&&!done)g+=`<g id="dot"><circle r="15" fill="var(--h)"/>${T(0,6,'H⁻','#fff',0,15)}</g>`}
- if(al)g+=T(380,66,'Hay H en α: la base forma enolato y gana el aldol','var(--bad)',0,24);
+ if(al)g+=T(380,66,ty===1?'Con H en α: primero aldol con HCHO, luego Cannizzaro cruzada (ítem 6)':'Hay H en α: la base forma enolato y gana el aldol','var(--bad)',0,ty===1?19:24);
  $('#st').innerHTML=g;
- $('#cap').innerHTML=al?'Elige un aldehído sin H en α para seguir el viaje del hidruro.':CP[s](i,dn,bn);
+ $('#cap').innerHTML=al?(ty===1?'Con H en α la cruzada empieza por un aldol con HCHO y después viene la transferencia del hidruro: sigue ese caso en el ítem 6 (Aplicación).':'Elige un aldehído sin H en α para seguir el viaje del hidruro.'):CP[s](i,dn,bn);
  draw3(s);$('#bk').disabled=al||s===0;$('#nx').disabled=al||s===5;
  if(s===3&&!done){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return scene(3,true);fly()}}
 function fly(){cancelAnimationFrame(raf);const p=$('#hp'),n=p.getTotalLength(),d=$('#dot'),t0=performance.now();
@@ -163,8 +188,8 @@ const Q=[
 {l:'Nivel 2 · Cruzada',q:'Benzaldehído + exceso de formaldehído + base concentrada. ¿Qué se oxida?',o:['El benzaldehído','El formaldehído','Los dos por igual'],a:1,e:'El HCHO es más electrófilo y menos impedido: forma antes el intermediario que dona el hidruro y sale como formiato. El PhCHO termina como alcohol bencílico.'},
 {l:'Nivel 2 · Cruzada',q:'Isobutiraldehído + exceso de HCHO + base. ¿Producto final?',o:['Ácido isobutírico','Neopentilglicol','Alcohol isobutílico'],a:1,e:'Aldol con HCHO → 2,2-dimetil-3-hidroxipropanal; luego un HCHO le dona el hidruro (Cannizzaro cruzada) → diol. Misma jugada que la ertugliflozina.'},
 {l:'Nivel 3 · Deuterio',q:'PhCDO en H₂O con base. ¿Cómo sale el alcohol?',o:['PhCH₂OH','PhCD₂OH','PhCHDOH'],a:1,e:'El hidruro (aquí deuteruro) salta de C a C: el alcohol conserva los dos D del carbono. El O–H sí viene del agua.'},
-{l:'Nivel 3 · Deuterio',q:'PhCHO en D₂O con base. ¿El alcohol gana D en el carbono?',o:['Sí, sale PhCHD–OH','No, los H del C vienen del aldehído'],a:1,e:'El disolvente no aporta H al carbono: el hidruro viaja directo entre moléculas. Confírmalo en March o Carey–Sundberg antes de citarlo.'}];
-function rq(rev,pick){const x=Q[qi];$('#lv').textContent=x.l;$('#q').textContent=x.q;$('#qc').textContent=(qi+1)+' / '+Q.length;
+{l:'Nivel 3 · Deuterio',q:'PhCHO en D₂O con base. ¿El alcohol gana D en el carbono?',o:['Sí, sale PhCHD–OH','No, los H del C vienen del aldehído'],a:1,e:'El disolvente no aporta H al carbono: el hidruro viaja directo entre moléculas.'}];
+function rq(rev,pick){const x=Q[qi];$('#lv').textContent=x.l;$('#q').textContent=x.q;$('#qc').textContent=(qi+1)+' / '+Q.length+' · aciertos '+Object.values(SCO).filter(Boolean).length+' de '+Object.keys(SCO).length;
  $('#op').innerHTML=x.o.map((t,k)=>`<button data-k="${k}" class="${rev&&k===x.a?'on':''}"${rev&&k===pick?` style="outline:3px solid var(--${k===x.a?'ok':'bad'})"`:''}>${t}</button>`).join('');
  $('#ex').innerHTML=rev?`<p><b>${pick===undefined?'Respuesta: '+x.o[x.a]:pick===x.a?'Correcto: '+x.o[x.a]:'No, era '+x.o[x.a]}.</b> ${x.e}</p>`:'';
  $('#qb').disabled=!qi;$('#qn').disabled=qi===Q.length-1}
@@ -172,13 +197,8 @@ $('#sel').innerHTML=A.map((a,k)=>`<option value="${k}">${a.n}</option>`).join(''
 $('#sel').onchange=e=>{sel=+e.target.value;go(0);ver()};
 
 $('#nx').onclick=()=>go(S+1);$('#bk').onclick=()=>go(S-1);$('#rs').onclick=()=>go(0);
-$('#op').onclick=e=>{const b=e.target.closest('button');if(b)rq(1,+b.dataset.k)};
+$('#op').onclick=e=>{const b=e.target.closest('button');if(b){const k=+b.dataset.k;if(SCO[qi]===undefined)SCO[qi]=k===Q[qi].a;rq(1,k)}};
 $('#qr').onclick=()=>rq(1);$('#qn').onclick=()=>{qi++;rq(0)};$('#qb').onclick=()=>{qi--;rq(0)};
-const tab=n=>{$('#p1').hidden=n!==1;$('#p2').hidden=n!==2;$('#t1').className=n===1?'on':'';$('#t2').className=n===2?'on':''};
-$('#t1').onclick=()=>tab(1);$('#t2').onclick=()=>tab(2);
-document.onkeydown=e=>{const r=e.key==='ArrowRight',l=e.key==='ArrowLeft';if(!r&&!l||e.target.tagName==='SELECT')return;
- if(!$('#p1').hidden){const b=r?$('#nx'):$('#bk');if(!b.disabled)go(S+(r?1:-1))}
- else{const b=r?$('#qn'):$('#qb');if(!b.disabled){qi+=r?1:-1;rq(0)}}};
 /* ---------- 3D ---------- */
 const nrm=v=>{const l=Math.hypot(...v);return v.map(x=>x/l)},crs=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
 function dirs(u){const t=Math.abs(u[0])<.9?[1,0,0]:[0,1,0],e=nrm(crs(u,t)),g=crs(u,e);return[0,2,4].map(k=>{const f=k*Math.PI/3;return[0,1,2].map(i=>-u[i]/3+.943*(Math.cos(f)*e[i]+Math.sin(f)*g[i]))})}
@@ -194,13 +214,13 @@ const KS={
  acid:r=>[...KS.carb(r),['H',1.5,-1.4,0]],
  ol:r=>[...r,['C',0,0,0],['H',.36,.51,.89],['O',.48,-.67,-1.17],['H',.77,-1.11,-1.98],['H',.36,1.03,0,1]],
  ts:(rd,ra)=>{const c=Math.cos(-1.2305),s=Math.sin(-1.2305),d=KS.tet(rd).map(([e,x,y,z,f])=>f===1?[e,1.25,0,0,1]:[e,x*c-y*s,x*s+y*c,z,f]),a=KS.ald(ra).map(([e,x,y,z,f])=>[e,2.5+z,y,-x,f]);return[...d,...a]}};
-const cv=$('#c3'),cx=cv.getContext('2d');let ry=-.6,rx=.35,AT=[],BD=[],R0=5,drag=0;
+const cv=$('#c3'),cx=cv.getContext('2d'),DP=Math.min(2,devicePixelRatio||1);cv.width=560*DP;cv.height=420*DP;let ry=-.6,rx=.35,AT=[],BD=[],R0=5,drag=0;
 function load(a){const cr={C:.76,H:.31,O:.66,N:.71};BD=[];
  a.forEach((p,i)=>a.forEach((q,j)=>{if(j>i&&!(p[0]==='H'&&q[0]==='H')&&!(p[0]==='O'&&q[0]==='O')&&Math.hypot(p[1]-q[1],p[2]-q[2],p[3]-q[3])<1.25*(cr[p[0]]+cr[q[0]]))BD.push([i,j])}));
  const m=[1,2,3].map(k=>a.reduce((s,p)=>s+p[k],0)/a.length);
  AT=a.map(p=>[p[0],p[1]-m[0],p[2]-m[1],p[3]-m[2],p[4]]);R0=Math.max(...AT.map(p=>Math.hypot(p[1],p[2],p[3])))+1;paint()}
-function paint(){const w=cv.width,h=cv.height,sc=Math.min(w,h)/2/R0*.85,cs=Math.cos(ry),sn=Math.sin(ry),cb=Math.cos(rx),sb=Math.sin(rx);
- const card=getComputedStyle(cv).getPropertyValue('--card').trim()||'#fff';cx.clearRect(0,0,w,h);
+function paint(){const w=560,h=420,sc=Math.min(w,h)/2/R0*.85,cs=Math.cos(ry),sn=Math.sin(ry),cb=Math.cos(rx),sb=Math.sin(rx);
+ const card=getComputedStyle(cv).getPropertyValue('--card').trim()||'#fff';cx.setTransform(DP,0,0,DP,0,0);cx.clearRect(0,0,w,h);
  const P=AT.map(p=>{const x=p[1]*cs+p[3]*sn,z0=-p[1]*sn+p[3]*cs;return{e:p[0],f:p[4],x:w/2+x*sc,y:h/2-(p[2]*cb-z0*sb)*sc,z:p[2]*sb+z0*cb}});
  const it=BD.map(([i,j])=>({b:1,i,j,z:(P[i].z+P[j].z)/2-.01}));P.forEach(p=>it.push({a:p,z:p.z}));it.sort((u,v)=>u.z-v.z);
  const ln=(p,q)=>{cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.stroke()};
@@ -236,19 +256,46 @@ cv.onpointerup=()=>drag=0;
 (function spin(){if(!drag&&cv.offsetParent&&!matchMedia('(prefers-reduced-motion:reduce)').matches){ry+=.006;paint()}requestAnimationFrame(spin)})();
 /* ---------- los 8 ítems ---------- */
 const P={
-1:['Nombre y contexto',`<p><b>Reacción de Cannizzaro</b> (Stanislao Cannizzaro, 1853). Es una <b>desproporción redox</b>: dos moléculas de un aldehído sin H en α, con base fuerte, dan un alcohol y un ácido carboxílico (como carboxilato).</p><p><b>Para qué sirve:</b> oxidar y reducir a la vez cuando otros métodos son poco prácticos. Variantes: <b>cruzada</b> (formaldehído como reductor) e <b>intramolecular</b> (dialdehídos → hidroxiácidos).</p><p class="sub">Gancho: el mismo Cannizzaro defendió las ideas de Avogadro en el Congreso de Karlsruhe (1860).</p>`],
-2:['Reacción general',`<p><b>2 RCHO + OH⁻ → RCH₂OH + RCO₂⁻</b> (con H₃O⁺: RCO₂H)</p><ul><li><b>Grupo que cambia:</b> el aldehído, C(=O)H.</li><li><b>Se rompe:</b> el π del C=O y un enlace C–H (sale como H⁻).</li><li><b>Se forma:</b> un C–H nuevo (en el alcohol) y un carboxilato.</li><li><b>Condiciones:</b> NaOH o KOH concentrados, calor; el aldehído no debe tener H en α (ArCHO, t-BuCHO, HCHO).</li><li><b>Cruzada:</b> ArCHO + HCHO + OH⁻ → ArCH₂OH + HCO₂⁻.</li></ul><p class="sub">En la versión simple, cada producto rinde como máximo 50 % del aldehído; la cruzada evita esa limitación.</p>`],
-4:['Fundamento químico',`<ul><li><b>Sin H en α no hay enolato:</b> la base no puede desprotonar, ataca el C=O y no compite el aldol.</li><li><b>El C=O es electrófilo</b> (δ+ en C): el OH⁻ se adiciona y forma un alcóxido tetraédrico (sp³).</li><li><b>Por qué sale un hidruro:</b> el O⁻ empuja sus electrones, regenera el C=O y expulsa el H con su par. Es mal grupo saliente; a base concentrada ayuda el dianión, mejor donador.</li><li><b>Quién dona y quién recibe</b> (explicación habitual): el aldehído más electrófilo y menos impedido forma antes el aducto con OH⁻; por eso en la cruzada se oxida el HCHO.</li><li><b>Fuerza impulsora:</b> el carboxilato es muy estable y el último paso ácido–base empuja el equilibrio.</li><li><b>Geometría:</b> plano 120° → tetraédrico 109,5° → estado de transición C···H···C.</li></ul>`],
+1:['Nombre y contexto',`<p><b>Reacción de Cannizzaro</b> (1853). Es una <b>desproporción redox</b>: dos moléculas del mismo aldehído reaccionan entre sí, una se oxida y la otra se reduce. El resultado es un <b>alcohol</b> y un <b>ácido carboxílico</b> (como carboxilato mientras haya base).</p>
+<h3>Origen</h3>
+<p>Stanislao Cannizzaro la describió en 1853 al tratar benzaldehído con una base fuerte concentrada: obtuvo alcohol bencílico y ácido benzoico (ref. 1 de la revisión). Mostró que un aldehído puede oxidarse y reducirse a la vez, sin oxidante ni reductor externos.</p>
+<p class="sub">Dato curioso: el mismo Cannizzaro defendió las ideas de Avogadro en el Congreso de Karlsruhe (1860).</p>
+<h3>¿Para qué tipo de transformación se usa?</h3>
+<ul><li>Para convertir en un solo paso aldehídos <b>sin H en α</b> (aromáticos, pivalaldehído, formaldehído) en alcohol y ácido.</li><li>Cuando otros métodos de oxidación o reducción son difíciles o poco prácticos.</li><li>Para <b>desimetrizar</b> dialdehídos (un CHO se oxida y el otro se reduce).</li><li>Combinada con el aldol, para construir carbonos cuaternarios con dos CH₂OH (ítem 6).</li></ul>
+<h3>El cruce de caminos</h3>
+<table><tr><th>¿Tiene H en α?</th><th>Qué hace la base</th><th>Resultado</th></tr><tr><td>Sí (CH₃CHO, i-PrCHO)</td><td>Arranca ese H y forma un enolato</td><td>Aldol</td></tr><tr><td>No (PhCHO, t-BuCHO, HCHO)</td><td>Ataca el C=O</td><td>Cannizzaro</td></tr></table>
+<h3>Tres versiones (Figura 1 de la revisión)</h3>
+<ul><li><b>Intermolecular:</b> dos moléculas iguales de R<sup>1</sup>CHO.</li><li><b>Cruzada:</b> R<sup>1</sup>CHO con formaldehído en exceso, que se sacrifica como reductor.</li><li><b>Intramolecular:</b> un dialdehído da un hidroxiácido.</li></ul>
+<p class="sub">Hoy se estudia con ácidos de Lewis, microondas y sin disolvente, y aparece en síntesis de fármacos, productos naturales y en la industria (pentaeritritol).</p>`],
+2:['Reacción general',`<h3>La ecuación en sus tres versiones</h3>
+<ul><li><b>Intermolecular:</b> 2 R<sup>1</sup>CHO + OH⁻ → R<sup>1</sup>CH₂OH + R<sup>1</sup>CO₂⁻</li><li><b>Cruzada:</b> R<sup>1</sup>CHO + HCHO + OH⁻ → R<sup>1</sup>CH₂OH + HCO₂⁻</li><li><b>Intramolecular:</b> R<sup>1</sup>R<sup>2</sup>C(CHO)₂ + OH⁻ → R<sup>1</sup>R<sup>2</sup>C(CH₂OH)(CO₂⁻)</li></ul>
+<p class="sub">Con H₃O⁺ el carboxilato pasa a ácido, RCO₂H.</p>
+<h3>Qué cambia en la molécula</h3>
+<table><tr><th></th><th>Aldehído que se oxida</th><th>Aldehído que se reduce</th></tr><tr><td>Grupo funcional</td><td>CHO → CO₂⁻ (ácido)</td><td>CHO → CH₂OH (alcohol)</td></tr><tr><td>Se rompe</td><td>un enlace C–H (sale como H⁻)</td><td>el π del C=O</td></tr><tr><td>Se forma</td><td>un enlace C–O (el del OH⁻ que se adicionó)</td><td>un C–H nuevo (el hidruro) y un O–H tras el protón</td></tr><tr><td>Estado de oxidación del C</td><td>+1 → +3</td><td>+1 → −1</td></tr></table>
+<h3>Condiciones y sustratos</h3>
+<ul><li><b>Clásicas:</b> NaOH, KOH o Ba(OH)₂ concentrados, agua o alcohol, con calor.</li><li><b>Suaves</b> (revisión, Esq. 9–12): MgBr₂·Et₂O/Et₃N o LiBr/Et₃N a temperatura ambiente, AlCl₃/Et₃N, γ-alúmina con microondas.</li><li><b>Sustratos:</b> ArCHO (incluidos furfural y piridincarbaldehídos), t-BuCHO y HCHO. No sirven los que tienen H en α.</li></ul>
+<h3>Dos cuentas para no olvidar</h3>
+<ul><li><b>Átomos:</b> 2 RCHO + NaOH → RCH₂OH + RCO₂Na está balanceada: la base es reactivo, no catalizador.</li><li><b>Rendimiento:</b> en la versión simple, cada producto rinde como máximo 50 % del aldehído; la cruzada permite reducir por completo el aldehído de interés.</li></ul>
+<h3>Cómo reconocerla</h3>
+<ol><li>Aldehído(s) sin H en α.</li><li>Base fuerte concentrada.</li><li>Productos: alcohol y ácido (como sal). Con HCHO en exceso: solo alcohol y formiato.</li></ol>`],
+4:['Fundamento químico',`<h3>1 · ¿Por qué la base ataca el C=O y no arranca un H?</h3>
+<p>Sin H en α no hay enolato posible, así que el aldol no compite. El C=O está polarizado (C δ+, O δ−) y el OH⁻ se adiciona al C: se forma un alcóxido tetraédrico (sp³). Esa adición es rápida y reversible.</p>
+<h3>2 · ¿Por qué puede salir un hidruro?</h3>
+<p>El H⁻ es un grupo saliente muy malo. Pero el O⁻ del intermediario «empuja» sus electrones para regenerar el C=O, y eso expulsa el H con su par de electrones. A base muy concentrada el intermediario puede perder otro H⁺ (dianión), un donador de hidruro aún mejor.</p>
+<h3>3 · ¿Por qué el hidruro va a otro aldehído?</h3>
+<p>El C=O del segundo aldehído es electrófilo (δ+): recibe el H⁻ y su π pasa al O (alcóxido). El estado de transición es C···H···C, lineal o doblado (refs. 7–11). Los experimentos con deuterio indican que ese H sale del propio aldehído, no del disolvente.</p>
+<h3>4 · ¿Quién dona y quién recibe?</h3>
+<p>Lo decide quién forma antes el aducto con OH⁻: el aldehído más electrófilo y menos impedido. Por eso, en la cruzada, el formaldehído se oxida (formiato) y el otro aldehído se reduce.</p>
+<h3>5 · ¿Qué empuja la reacción?</h3>
+<p>Se forma un carboxilato muy estable y la transferencia de protón final es casi irreversible. Por eso la base se consume y hace falta acidificar para aislar el ácido.</p>
+<h3>6 · ¿Qué cambia según la estructura?</h3>
+<ul><li><b>Geometría:</b> plano sp² (120°) → tetraédrico sp³ (109,5°) → estado de transición.</li><li><b>Efecto electrónico:</b> un C=O más electrófilo (por ejemplo, con NO₂) forma antes el aducto con OH⁻.</li><li><b>Impedimento estérico:</b> frena el ataque, pero el pivalaldehído sí da Cannizzaro porque no puede enolizarse.</li><li><b>Ácidos de Lewis</b> (Mg²⁺, Li⁺, Al³⁺): activan el C=O y permiten condiciones suaves.</li><li><b>Intramolecular:</b> la cercanía de los dos CHO favorece el salto; en dialdehídos con cadenas, un catión plantilla (Ba²⁺) los acerca (Esq. 14, 15 y 17).</li></ul>`],
 };
-let cur=3;const nv=document.querySelector('nav');nv.innerHTML=['Contexto','Reacción','Mecanismo','Fundamento','Ejemplo','Aplicación','Analogía','Pregunta'].map((t,k)=>`<button>${k+1} · ${t}</button>`).join('');
-function show(n){cur=n;$('#p1').hidden=n!==3;$('#p2').hidden=n!==8;$('#px').hidden=[3,5,6,7,8].includes(n);$('#p5').hidden=n!==5;$('#p6').hidden=n!==6;$('#p7').hidden=n!==7;
- if(P[n])$('#pxb').innerHTML=`<h2>${n} · ${P[n][0]}</h2>${P[n][1]}`;
- [...nv.children].forEach((b,k)=>b.className=k+1===n?'on':'');if(n===3)go(S);if(n===5)exr();if(n===6)apr();if(n===7)twr()}
+let cur=3;const nv=document.querySelector('nav');nv.innerHTML=['Contexto','Reacción','Mecanismo','Fundamento','Ejemplo','Aplicación','Analogía','Pregunta','Laboratorio'].map((t,k)=>`<button>${k+1} · ${t}</button>`).join('');
+function show(n){cur=n;hdr(n);$('#p1').hidden=n!==3;$('#p2').hidden=n!==8;$('#px').hidden=[3,5,6,7,8,9].includes(n);$('#p5').hidden=n!==5;$('#p6').hidden=n!==6;$('#p7').hidden=n!==7;$('#p9').hidden=n!==9;
+ if(P[n])$('#pxb').innerHTML=VIS[n]?VIS[n]():`<h2>${n} · ${P[n][0]}</h2>${P[n][1]}`;
+ [...nv.children].forEach((b,k)=>b.className=k+1===n?'on':'');if(n===3)go(S);if(n===5)exr();if(n===6)apr();if(n===7)twr();if(n===9)labr()}
 nv.onclick=e=>{const b=e.target.closest('button');if(b)show([...nv.children].indexOf(b)+1)};
-document.onkeydown=e=>{const r=e.key==='ArrowRight',l=e.key==='ArrowLeft';if(!r&&!l||e.target.tagName==='SELECT')return;const d=r?1:-1;
- if(cur===3){const b=r?$('#nx'):$('#bk');if(!b.disabled)return go(S+d)}
- else if(cur===8){const b=r?$('#qn'):$('#qb');if(!b.disabled){qi+=d;return rq(0)}}
- const n=cur+d;if(n>0&&n<9)show(n)};
 /* ---------- ejemplo concreto interactivo ---------- */
 const EX=[
 {n:'benzaldehído',f:'PhCHO',fa:'PhCH₂OH',fs:'PhCO₂Na',al:'alcohol bencílico',sa:'benzoato de sodio',ac:'ácido benzoico',y:'90 %'},
@@ -327,8 +374,152 @@ $('#tws').onclick=e=>{const b=e.target.closest('button');if(b){const k=+b.datase
 $('#twj').onclick=()=>{S=[0,2,3,3,4,5][tS];show(3)};
 /* ---------- teclado: ← → por pasos y por ítems ---------- */
 const ST={5:[()=>eS,k=>{if(k<eS||!$('#exn').disabled){eS=k;exr()}},4],7:[()=>tS,k=>{if(k===1&&!tS)act(-1);else tgo(k)},5],3:[()=>S,go,5],6:[()=>aS,k=>{aS=k;apr()},3],8:[()=>qi,k=>{qi=k;rq(0)},Q.length-1]};
-document.onkeydown=e=>{const r=e.key==='ArrowRight',l=e.key==='ArrowLeft';if(!r&&!l||e.target.tagName==='SELECT')return;const d=r?1:-1,c=ST[cur],v=c&&c[0]()+d;
+document.onkeydown=e=>{const r=e.key==='ArrowRight',l=e.key==='ArrowLeft';if(!r&&!l||/^(SELECT|INPUT)$/.test(e.target.tagName))return;const d=r?1:-1,c=ST[cur],v=c&&c[0]()+d;
  if(c&&v>=0&&v<=c[2]&&!(cur===3&&$('#nx').disabled&&$('#bk').disabled))return c[1](v);
- const n=cur+d;if(n>0&&n<9)show(n)};
+ const n=cur+d;if(n>0&&n<10)show(n)};
+/* ---------- visuales (imágenes en SVG) ---------- */
+const hx=(x,y,r)=>`<polygon points="${[0,60,120,180,240,300].map(a=>[(x+r*Math.cos(a*Math.PI/180)).toFixed(1),(y-r*Math.sin(a*Math.PI/180)).toFixed(1)].join(',')).join(' ')}" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round"/><circle cx="${x}" cy="${y}" r="${r*.55}" fill="none" stroke="var(--ink)" stroke-width="1.6"/>`;
+const sv=(h,b)=>`<svg viewBox="0 0 760 ${h}" role="img">${b}</svg>`;
+const lbl=(x,y,t,c,an)=>{const w=t.length*14+8;return`<rect x="${an==='end'?x-w:x}" y="${y-16}" width="${w}" height="32" rx="9" fill="var(${c})" opacity=".18"/>`+T(an==='end'?x-4:x+4,y+8,t,`var(${c})`,an||'start',22)};
+function scm(tk){let x=8,y=62,g='';
+ for(const[k,a,c,b]of tk){
+  if(k==='t'){g+=T(x,y+9,a,c?`var(${c})`:'var(--ink)','start',28);x+=a.length*15+12}
+  else if(k==='a'){g+=`<line x1="${x}" y1="${y}" x2="${x+86}" y2="${y}" stroke="var(--ink)" stroke-width="3"/><path d="M${x+92} ${y}l-12 -7v14z" fill="var(--ink)"/>`+T(x+44,y-12,a,'var(--in)',0,16);x+=108}
+  else if(k==='m'){const w=a.length*14+8;g+=hx(x+22,y,20)+`<line x1="${x+42}" y1="${y}" x2="${x+54}" y2="${y}" stroke="var(--ink)" stroke-width="2.5"/>`+lbl(x+54,y,a,c)+`<rect x="${x+22}" y="${y+34}" width="${w+32}" height="24" rx="12" fill="var(${c})"/>`+T(x+22+(w+32)/2,y+51,b,'var(--bg)',0,15);x+=w+78}
+  else{const[t1,t2]=a.split('|'),[c1,c2]=c.split('|'),cx=x+100,cy=y+10;g+=hx(cx,cy,20)+`<line x1="${cx-10}" y1="${cy-17.3}" x2="${cx-20}" y2="${cy-34}" stroke="var(--ink)" stroke-width="2.5"/><line x1="${cx+10}" y1="${cy-17.3}" x2="${cx+20}" y2="${cy-34}" stroke="var(--ink)" stroke-width="2.5"/>`+lbl(cx-20,cy-34,t1,c1,'end')+lbl(cx+20,cy-34,t2,c2);x+=205}}
+ return g}
+const TOK={
+ i:[['t','2 ×'],['m','CHO','--in','C +1'],['t','+ OH⁻'],['a','conc.'],['m','CH₂OH','--oh','C −1'],['t','+'],['m','CO₂⁻','--h','C +3']],
+ c:[['m','CHO','--in','C +1'],['t','+ HCHO','--am'],['t','+ OH⁻'],['a',''],['m','CH₂OH','--oh','C −1'],['t','+ HCO₂⁻','--h']],
+ r:[['o','CHO|CHO','--in|--in'],['t','+ OH⁻'],['a',''],['o','CH₂OH|CO₂⁻','--oh|--h']]};
+const FORK=`<rect x="14" y="70" width="150" height="60" rx="14" fill="var(--in)" opacity=".15"/>`+T(89,96,'Aldehído RCHO','var(--in)',0,18)+T(89,118,'+ base fuerte','var(--in)',0,16)
+ +`<line x1="164" y1="100" x2="190" y2="100" stroke="var(--ink)" stroke-width="3"/><polygon points="270,54 350,100 270,146 190,100" fill="var(--in)" fill-opacity=".15" stroke="var(--in)" stroke-width="2.5"/>`+T(270,96,'¿Tiene','var(--ink)',0,18)+T(270,118,'H en α?','var(--ink)',0,18)
+ +`<path d="M338 78L430 44" stroke="var(--am)" stroke-width="3" fill="none"/>`+T(372,50,'Sí','var(--am)',0,20)+`<path d="M338 122L430 156" stroke="var(--oh)" stroke-width="3" fill="none"/>`+T(372,164,'No','var(--oh)',0,20)
+ +`<rect x="430" y="10" width="316" height="68" rx="14" fill="var(--am)" opacity=".16"/>`+T(588,40,'CH₃–CHO → enolato','var(--am)',0,22)+T(588,66,'gana el ALDOL','var(--am)',0,20)
+ +`<rect x="430" y="122" width="316" height="68" rx="14" fill="var(--oh)" opacity=".16"/>`+hx(468,156,20)+`<line x1="488" y1="156" x2="500" y2="156" stroke="var(--ink)" stroke-width="2.5"/>`+T(504,163,'CHO','var(--oh)','start',20)+T(660,150,'sin H en α','var(--oh)',0,17)+T(660,174,'CANNIZZARO','var(--oh)',0,20);
+const TLN=`<line x1="40" y1="46" x2="720" y2="46" stroke="var(--line)" stroke-width="5" stroke-linecap="round"/>`+[[110,'1853','Cannizzaro','PhCHO + KOH','--in'],[290,'1860','Karlsruhe','defiende a Avogadro','--h'],[470,'Siglo XX','Cruzada e','intramolecular','--oh'],[650,'Hoy','Ácidos de Lewis,','verde, síntesis','--am']].map(([x,y,a,b,c])=>`<circle cx="${x}" cy="46" r="12" fill="var(${c})"/>`+T(x,24,y,`var(${c})`,0,20)+T(x,76,a,'var(--ink)',0,16)+T(x,96,b,'var(--ink)',0,16)).join('');
+const EP='M40 150C70 150 90 112 125 112S165 138 190 138S270 60 320 60S385 176 430 176S480 170 520 190S620 222 720 222';
+const ENG=`<defs><linearGradient id="eg" x1="0" x2="1"><stop offset="0" stop-color="var(--in)"/><stop offset=".5" stop-color="var(--h)"/><stop offset="1" stop-color="var(--oh)"/></linearGradient></defs><path d="${EP}V250H40Z" fill="url(#eg)" opacity=".12"/><path d="${EP}" fill="none" stroke="url(#eg)" stroke-width="5" stroke-linecap="round"/>`
+ +`<line x1="30" y1="10" x2="30" y2="250" stroke="var(--mute)" stroke-width="2"/><line x1="30" y1="250" x2="740" y2="250" stroke="var(--mute)" stroke-width="2"/>`+T(60,24,'Energía','var(--mute)','start',15)+T(385,274,'avance de la reacción','var(--mute)',0,15)
+ +`<line x1="250" y1="138" x2="250" y2="64" stroke="var(--mute)" stroke-width="2" stroke-dasharray="5 4"/>`+T(272,104,'barrera','var(--mute)','start',15)
+ +[[50,150,'--in'],[190,138,'--am'],[320,60,'--h'],[430,176,'--h'],[700,222,'--oh']].map(([x,y,c])=>`<circle cx="${x}" cy="${y}" r="8" fill="var(${c})"/>`).join('')
+ +T(86,176,'A + A + OH⁻','var(--in)',0,16)+T(190,164,'B','var(--am)',0,18)+T(320,40,'C‡ · paso lento: salta el H⁻','var(--h)',0,17)+T(430,202,'D + E','var(--h)',0,17)+T(640,196,'carboxilato + alcohol: muy estable','var(--oh)',0,16);
+const MK=(i,c)=>`<defs><marker id="${i}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(${c})"/></marker></defs>`,ln2=(a,b,c,d)=>`<line x1="${a}" y1="${b}" x2="${c}" y2="${d}" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>`;
+const C1=MK('k1','--oh')+T(90,92,'C','var(--in)',0,34)+T(150,92,'O','var(--h)',0,34)+ln2(106,82,134,82)+ln2(106,90,134,90)+T(90,52,'δ+','var(--in)',0,22)+T(150,52,'δ−','var(--h)',0,22)+T(34,34,'OH⁻','var(--oh)',0,22)+`<path d="M58 40Q76 40 84 62" fill="none" stroke="var(--oh)" stroke-width="3" marker-end="url(#k1)"/>`;
+const C2=MK('k2','--ink')+MK('k3','--h')+T(110,98,'C','var(--ink)',0,30)+ln2(110,80,110,56)+T(110,46,'O⁻','var(--oh)',0,24)+ln2(120,102,156,120)+T(170,134,'H','var(--h)',0,24)+ln2(100,102,66,120)+T(52,134,'R','var(--ink)',0,24)+`<path d="M92 36Q70 56 98 74" fill="none" stroke="var(--ink)" stroke-width="3" marker-end="url(#k2)"/><path d="M184 120Q216 100 224 70" fill="none" stroke="var(--h)" stroke-width="3" stroke-dasharray="6 5" marker-end="url(#k3)"/>`+T(206,56,'H⁻','var(--h)',0,20);
+const C3=T(50,88,'C','var(--ink)',0,28)+ln2(22,82,38,82)+T(12,88,'R','var(--ink)',0,22)+ln2(47,66,47,50)+ln2(55,66,55,50)+T(51,40,'O','var(--h)',0,24)+ln2(51,98,51,114)+T(51,136,'O⁻','var(--h)',0,24)+T(120,92,'↔','var(--ink)',0,36)+T(190,88,'C','var(--ink)',0,28)+ln2(162,82,178,82)+T(152,88,'R','var(--ink)',0,22)+ln2(191,66,191,50)+T(191,40,'O⁻','var(--h)',0,24)+ln2(187,98,187,114)+ln2(195,98,195,114)+T(191,136,'O','var(--h)',0,24);
+const mc=(t,c,b,cap)=>`<div class="cd" style="border-top:5px solid var(--${c})"><b style="color:var(--${c})">${t}</b><svg viewBox="0 0 240 150" role="img">${b}</svg><p>${cap}</p></div>`;
+const RGB={'--am':'178,106,0','--oh':'11,122,117','--h':'194,24,91','--in':'57,73,171','--bad':'179,38,30'},cp=(t,c)=>`<span class="cp" style="color:var(${c});background:rgba(${RGB[c]},.16)">${t}</span>`,dt=n=>`<details class="box"><summary><b>Ver la explicación completa</b></summary>${P[n][1]}</details>`;
+const VIS={
+1:()=>`<p>La <b>Cannizzaro</b> (1853) es una <b>desproporción redox</b>: de dos moléculas iguales de aldehído, una se <span class="h">oxida</span> y la otra se <span class="t">reduce</span>.</p>`+sv(130,scm(TOK.i))+`<h3>El cruce de caminos</h3>`+sv(200,FORK)+`<h3>Línea de tiempo</h3>`+sv(110,TLN)+`<h3>¿Para qué se usa?</h3><p>`+[['Oxidar y reducir de una vez','--in'],['Aldehídos sin H en α','--oh'],['Desimetrizar dialdehídos','--h'],['Carbonos cuaternarios con 2 CH₂OH','--am'],['Versiones verdes','--oh']].map(([t,c])=>cp(t,c)).join('')+`</p>`+dt(1),
+2:()=>`<h3 style="color:var(--in)">Intermolecular</h3>`+sv(110,scm(TOK.i))+`<h3 style="color:var(--am)">Cruzada</h3>`+sv(110,scm(TOK.c))+`<h3 style="color:var(--h)">Intramolecular</h3>`+sv(110,scm(TOK.r))
+ +`<div class="stt"><div class="sc" style="background:linear-gradient(120deg,#C2185B,#F06292)"><div class="big">+1 → +3</div>el que se oxida (ácido)</div><div class="sc" style="background:linear-gradient(120deg,#0B7A75,#4DD0C8)"><div class="big">+1 → −1</div>el que se reduce (alcohol)</div><div class="sc" style="background:linear-gradient(120deg,#3949AB,#7986CB)"><div class="big">≤ 50 %</div>de cada producto (versión simple)</div></div>`
+ +`<h3>Qué cambia</h3><table><tr><th></th><th style="background:rgba(194,24,91,.18)">Se oxida</th><th style="background:rgba(11,122,117,.18)">Se reduce</th></tr><tr><td>Grupo</td><td>CHO → CO₂⁻</td><td>CHO → CH₂OH</td></tr><tr><td>Se rompe</td><td>un C–H (sale como H⁻)</td><td>el π del C=O</td></tr><tr><td>Se forma</td><td>un C–O (del OH⁻)</td><td>un C–H nuevo y un O–H</td></tr></table>`
+ +`<h3>Condiciones</h3><p>`+['NaOH conc.','KOH conc.','Ba(OH)₂','calor'].map(t=>cp(t,'--am')).join('')+['LiBr/Et₃N · t.a.','MgBr₂·Et₂O/Et₃N','AlCl₃/Et₃N','γ-Al₂O₃ + microondas'].map(t=>cp(t,'--oh')).join('')+`</p><p class="sub">Ámbar: clásicas. Verde: suaves (Esq. 9–12 de la revisión).</p>`
+ +`<h3>Sustratos</h3><p>`+['ArCHO','furfural','piridincarbaldehído','t-BuCHO','HCHO'].map(t=>cp('✔ '+t,'--in')).join('')+['✘ CH₃CHO','✘ i-PrCHO (H en α)'].map(t=>cp(t,'--bad')).join('')+`</p>`+dt(2),
+4:()=>`<p>Tres fuerzas explican la reacción. Míralas en el diagrama de energía y en las tarjetas.</p>`+sv(285,ENG)+`<div class="g3">`+mc('1 · Polarización','in',C1,'El C=O tiene un C δ+: el OH⁻ ataca ahí.')+mc('2 · Empuje del O⁻','h',C2,'El O⁻ regenera el C=O y expulsa el H con su par (H⁻).')+mc('3 · Estabilidad','oh',C3,'El carboxilato reparte la carga: es muy estable y arrastra el equilibrio.')+`</div><h3>Qué lo cambia</h3><p>`+[['C=O más electrófilo (NO₂): ataque más rápido','--in'],['Impedimento estérico: frena el ataque','--am'],['Ácidos de Lewis (Mg²⁺, Li⁺): condiciones suaves','--oh'],['Ba²⁺ plantilla: acerca los dos CHO','--h'],['Sin H en α: no hay aldol','--bad']].map(([t,c])=>cp(t,c)).join('')+`</p>`+dt(4)};
+const HD=[['Nombre y contexto','Un aldehído, dos destinos','#6D4AFF','#A78BFA'],['Reacción general','Lo que entra y lo que sale','#C2185B','#F06292'],['Mecanismo','Sigue al hidruro','#0B7A75','#4DD0C8'],['Fundamento químico','Las fuerzas detrás de la reacción','#3949AB','#7986CB'],['Ejemplo concreto','Tú predices','#B26A00','#FFB74D'],['Aplicación','Una receta, tres escalas','#2E7D32','#81C784'],['En el aula','El partido de los gemelos','#D81B60','#FF8A65'],['Pregunta al grupo','Pon a prueba lo aprendido','#1565C0','#64B5F6'],['Laboratorio','Mueve las variables y observa','#00897B','#80CBC4']];
+function hdr(n){const h=HD[n-1];$('#hd').style.background=`linear-gradient(120deg,${h[2]},${h[3]})`;$('#hd').innerHTML=`<span class="nn">${n}</span><div><div class="tt">${h[0]}</div><div class="tg">${h[1]}</div></div>`}
+
+/* ---------- laboratorio ---------- */
+const LS=[{n:'Benzaldehído',s:0,M:[106.12,108.14],al:'alcohol bencílico',ac:'ácido benzoico',sa:'benzoato de sodio'},{n:'p-Nitrobenzaldehído',s:.78,M:[151.12,153.14],al:'alcohol p-nitrobencílico',ac:'ácido p-nitrobenzoico',sa:'p-nitrobenzoato de sodio'},{n:'p-Anisaldehído',s:-.27,M:[136.15,138.16],al:'alcohol p-metoxibencílico',ac:'ácido p-metoxibenzoico',sa:'p-metoxibenzoato de sodio'}];
+const lb={f:0,play:false,tab:0,iso:0,P:[]},lbB=y=>{const k=(y-70)/230;return[178-110*k,242+110*k]},fcl=()=>getComputedStyle(document.body).color;
+function cvs(id,w,h){const c=$(id),d=Math.min(2,devicePixelRatio||1);c.width=w*d;c.height=h*d;c.style.cursor='default';c.style.touchAction='auto';const x=c.getContext('2d');x.setTransform(d,0,0,d,0,0);return x}
+function lbModel(){const L=LS[+$('#lbs').value],cr=$('#lbm').value==='1',O=+$('#lbo').value,T=+$('#lbT').value+273.15,k=.0057*Math.pow(10,+$('#lbr').value*L.s)*Math.exp(-7217*(1/T-1/298.15)),g=o=>{o=Math.max(0,o);return o+.15*o*o},n=4000,r=[];
+ let A=1,t=0;const dt=(+$('#lbw').value)/n;
+ for(let i=0;i<=n;i++){r.push([t,A]);const o=O-(1-A)*(cr?1:.5),c=k*g(o);A=cr?A/(1+c*(1+A)*dt):A/(1+2*c*A*dt);t+=dt}
+ return{L,cr,O,r}}
+function labr(){if(!lb.cf){lb.cf=cvs('#lbf',420,320);lb.cp=cvs('#lbp',300,320);lb.cs=cvs('#lbsp',700,230);lb.ct=cvs('#lbtl',320,200);
+ $('#lbs').innerHTML=LS.map((l,k)=>`<option value="${k}">${l.n}</option>`).join('');
+ $('#lbt').innerHTML=['Matraz 3D','Espectros','Aislamiento','Química verde'].map((t,k)=>`<button data-k="${k}">${t}</button>`).join('');
+ $('#lbt').onclick=e=>{const b=e.target.closest('button');if(b)lbTab(+b.dataset.k)};
+ ['#lbs','#lbm','#lbo','#lbT','#lbr','#lbw'].forEach(q=>$(q).addEventListener('input',()=>lbGo(q==='#lbw'?null:lb.m.r)));['#lbd','#lba'].forEach(q=>$(q).onchange=()=>lbFrame());['#lbg1','#lbg2'].forEach(q=>$(q).addEventListener('input',lbGreen));
+ lb.yaw=.6;lb.pit=.35;{const c=$('#lbf');c.style.cursor='grab';c.style.touchAction='pan-y';
+ c.onpointerdown=e=>{lb.drag={x:e.clientX,y:e.clientY,m:0};c.setPointerCapture(e.pointerId)};
+ c.onpointermove=e=>{const d=lb.drag;if(!d)return;const dx=e.clientX-d.x,dy=e.clientY-d.y;d.m+=Math.abs(dx)+Math.abs(dy);lb.yaw+=dx*.01;lb.pit=Math.max(-1.2,Math.min(1.2,lb.pit+dy*.01));d.x=e.clientX;d.y=e.clientY};
+ c.onpointerup=e=>{const d=lb.drag;lb.drag=null;if(d&&d.m<6){const r=c.getBoundingClientRect(),px=(e.clientX-r.left)*420/r.width,py=(e.clientY-r.top)*320/r.height;let b=null,bd=1e9;(lb.pr||[]).forEach(o=>{const dd=Math.hypot(o.x-px,o.y-py);if(dd<o.r+8&&dd<bd){bd=dd;b=o.j}});lb.sel=b;lbFrame()}}}
+ $('#lbxs').innerHTML=EXP.map((e,k)=>`<button data-k="${k}">${e[0]}</button>`).join('');$('#lbxs').onclick=e=>{const b=e.target.closest('button');if(b)lbExp(+b.dataset.k)};
+ $('#lbpl').onclick=()=>{if(lb.f>=1)lb.f=0;lb.play=!lb.play;$('#lbpl').textContent=lb.play?'❚❚ Pausa':'▶ Reproducir'};
+ $('#lbtm').oninput=e=>{lb.f=e.target.value/1000;lb.play=false;$('#lbpl').textContent='▶ Reproducir'};
+ $('#lbin').onclick=()=>{lb.iso=Math.min(4,lb.iso+1);lbIso()};$('#lbik').onclick=()=>{lb.iso=Math.max(0,lb.iso-1);lbIso()}}
+ lbReset();lbTab(lb.tab)}
+function lbTab(k){lb.tab=k;[0,1,2,3].forEach(j=>$('#lb'+j).hidden=j!==k);[...$('#lbt').children].forEach((b,j)=>b.className=j===k?'on':'');lbFrame()}
+const lbC=()=>{const c=getComputedStyle(document.documentElement);return['--in','--oh','--h','--am'].map(k=>c.getPropertyValue(k).trim())};
+function lbReset(){const m=lb.m=lbModel(),cr=m.cr,na=cr?20:40;lb.na=na;lb.P=[];
+ for(let j=0;j<na*(cr?3:1);j++)lb.P.push(lbRnd());
+ lb.I=Array.from({length:50},lbRnd);lb.fx=[];lb.sel=null;lb.pnA=null;const rho=+$('#lbr').value;$('#lbov').textContent=m.O+' M';$('#lbTv').textContent=$('#lbT').value+' °C';$('#lbrv').textContent=rho;
+ const i9=m.r.findIndex(p=>p[1]<.1);$('#lbn').innerHTML=`<p><b>Tiempo para consumir el 90 % del aldehído: ${i9<0?'más de '+Math.round(m.r[m.r.length-1][0]):Math.round(m.r[i9][0])} min</b>${lbHint(i9)}</p><p>Barrera de activación: ${lbDG()}.</p>`+'<p>'+cp('ArCHO','--in')+cp('alcohol','--oh')+cp(cr?'formiato':'carboxilato','--h')+(cr?cp('HCHO','--am'):'')+'<span class="cp" style="border:1.5px solid var(--ink)">○ OH⁻ (base)</span>'+`</p><p><b>${m.L.n}</b>: σ = ${m.L.s}; velocidad ≈ ${Math.pow(10,rho*m.L.s).toFixed(2)}× la del benzaldehído (ρ = ${rho}). ${cr?'En la cruzada el HCHO en exceso se sacrifica y el alcohol puede acercarse a 100 %.':'En la versión simple cada producto se detiene en 50 % del aldehído: es el techo de la gráfica.'}</p><p class="sub">Tiempos y ρ ilustrativos; la velocidad de las moléculas se exagera para que se note el efecto de T. Lo real son las tendencias: más [NaOH] y más T aceleran (a base muy alta pesa el término en [OH⁻]², la vía del dianión), y los sustituyentes que retiran e⁻ aceleran (ρ &gt; 0).</p>`;
+ lbIso();lbGreen();lbFrame()}
+function lbFrame(){const m=lb.m,i=Math.round(lb.f*(m.r.length-1)),A=m.r[i][1];
+ if(lb.tab===0){lbDraw(i);lbPlot(i);$('#lbtx').textContent=lb.sel!=null?lbDsc(lb.P[lb.sel].t):lbNar(1-A)+' (Arrastra para girar el matraz y toca una molécula para saber qué es.)';$('#lbx').textContent=`t = ${m.r[i][0].toFixed(0)} min · aldehído consumido ${((1-A)*100).toFixed(0)} %`}
+ if(lb.tab===1){lbSpec(i);lbTlc(i)}if(lb.tab===3)lbGreen()}
+function lbNar(c){const cr=lb.m.cr;return c<.03?'Inicio: casi todo es aldehído (azul). Los círculos huecos son el OH⁻ de la base.':c<.9?(cr?'En marcha: cada aldehído azul se vuelve alcohol (turquesa) mientras un HCHO ámbar se vuelve formiato (magenta). Fíjate: los círculos huecos disminuyen, porque la base se consume.':'En marcha: siempre por parejas, un aldehído se vuelve alcohol (turquesa) y el otro carboxilato (magenta). Fíjate: la base se va gastando; es reactivo, no catalizador.'):(cr?'Casi final: el aldehído azul ya es alcohol; el HCHO que sobra queda en ámbar.':'Casi final: mitad alcohol, mitad carboxilato. Por eso cada producto llega, como máximo, al 50 %.')}
+const lbR=y=>y<1.3?1-.5*y:.35,LBB={lbs:0,lbm:'0',lbo:5,lbT:25,lbr:1,lbw:180};
+const EXP=[['1 · Más base',{lbo:10},'Hay el doble de OH⁻ (círculos huecos): el primer ataque al C=O ocurre más a menudo y la curva cae más rápido.'],['2 · Calentar',{lbT:60},'Con más temperatura todo se mueve más rápido y los choques son más frecuentes: reacción más veloz.'],['3 · Grupo nitro',{lbs:1},'El NO₂ quita electrones del carbonilo y lo hace más electrófilo: el OH⁻ lo ataca antes. Compara con la curva punteada.'],['4 · Grupo metoxi',{lbs:2},'El OMe dona electrones: carbonilo menos electrófilo, reacción más lenta.'],['5 · Cruzada',{lbm:'1'},'El HCHO (ámbar) se sacrifica como donador de hidruro: el alcohol ya no se detiene en 50 %.'],['↺ Inicio',{},'Valores iniciales: benzaldehído, 5 M, 25 °C, versión simple.']];
+function lbHint(i9){const W=+$('#lbw').value,t=lb.m.r[lb.m.r.length-1][0];return i9<0?' · <span class="sub">No termina en esta ventana: amplíala.</span>':lb.m.r[i9][0]<W/15?' · <span class="sub">Termina muy rápido para esta ventana: prueba una más corta.</span>':''}
+function lbDG(){const L=LS[+$('#lbs').value],d=-2.303*8.314e-3*(+$('#lbT').value+273.15)*(+$('#lbr').value)*L.s;return Math.abs(d)<.05?'igual que el benzaldehído (σ = 0)':(d<0?'baja':'sube')+' ≈ '+Math.abs(d).toFixed(1).replace('.',',')+' kJ/mol frente al benzaldehído'}
+function lbGo(p){lb.prev=p;lb.f=0;lb.play=true;$('#lbtm').value=0;$('#lbpl').textContent='❚❚ Pausa';lbReset()}
+function lbExp(k){const e=EXP[k];Object.entries(LBB).forEach(([a,v])=>$('#'+a).value=v);const b=lbModel().r;Object.entries(e[1]).forEach(([a,v])=>$('#'+a).value=v);$('#lbex').innerHTML='<b>'+e[0]+':</b> '+e[2];lbGo(k===5?null:b)}
+const lbRnd=()=>{const y=.1+Math.random()*.9,r=lbR(y)*.85*Math.sqrt(Math.random()),a=Math.random()*6.283,v=()=>(Math.random()-.5)*.02;return{x:r*Math.cos(a),y,z:r*Math.sin(a),vx:v(),vy:v(),vz:v()}};
+function lbStep(p,sp,a,b){p.x+=p.vx*sp;p.y+=p.vy*sp;p.z+=p.vz*sp;if(p.y<a||p.y>b){p.vy=-p.vy;p.y=Math.min(b,Math.max(a,p.y))}const R=lbR(p.y)-.08,h=Math.hypot(p.x,p.z);if(h>R){p.x*=R/h;p.z*=R/h;p.vx=-p.vx;p.vz=-p.vz}if(Math.random()<.05){p.vx+=(Math.random()-.5)*.008;p.vy+=(Math.random()-.5)*.008;p.vz+=(Math.random()-.5)*.008;const q=Math.hypot(p.vx,p.vy,p.vz);if(q>.014){p.vx*=.014/q;p.vy*=.014/q;p.vz*=.014/q}}}
+function lbProj(p){const cy=Math.cos(lb.yaw),sy=Math.sin(lb.yaw),cp_=Math.cos(lb.pit),sp_=Math.sin(lb.pit),y0=p.y-.85,x1=p.x*cy+p.z*sy,z1=-p.x*sy+p.z*cy,y2=y0*cp_-z1*sp_,z2=y0*sp_+z1*cp_,k=4/(4-z2);return{x:210+x1*k*118,y:175-y2*k*118,k,z:z2}}
+function lbDsc(t){const cr=lb.m.cr;return['ArCHO · aldehído aromático (C = +1). No tiene H en α, así que no hace aldol: el OH⁻ lo ataca directo en el C=O. Terminará como alcohol o como carboxilato.','Alcohol ArCH₂OH (C = −1). Era el aldehído que recibió el hidruro: se redujo.',cr?'Formiato HCO₂⁻ (C = +2). Era el HCHO que cedió su hidruro: se oxidó.':'Carboxilato ArCO₂⁻ (C = +3). Era el aldehído que cedió el hidruro: se oxidó.','HCHO · formaldehído (C = 0). Es el más electrófilo y menos impedido: forma antes el aducto con OH⁻ y cede el hidruro.'][t]+' (Toca otro lugar para soltar la selección.)'}
+function lbDraw(i){const x=lb.cf,m=lb.m,A=m.r[i][1],cr=m.cr,na=lb.na,nA=Math.round(na*A),col=lbC(),fc=fcl(),red=matchMedia('(prefers-reduced-motion:reduce)').matches,sp=red?0:.6+(+$('#lbT').value-20)/80*1.8;
+ if(!lb.drag&&$('#lbau').checked&&!red)lb.yaw+=.006;
+ if(lb.pnA!=null&&nA<lb.pnA&&lb.play)for(let j=nA;j<lb.pnA&&lb.fx.length<30;j++)lb.fx.push({j,l:1});lb.pnA=nA;
+ x.clearRect(0,0,420,320);
+ const ring=(y,r)=>Array.from({length:40},(_,a)=>lbProj({x:r*Math.cos(a/40*6.283),y,z:r*Math.sin(a/40*6.283)})),path=pts=>{x.beginPath();pts.forEach((q,k)=>k?x.lineTo(q.x,q.y):x.moveTo(q.x,q.y));x.closePath()};
+ path(ring(0,1));x.fillStyle='rgba(11,122,117,.10)';x.fill();path(ring(1.05,lbR(1.05)));x.fillStyle='rgba(11,122,117,.18)';x.fill();
+ const it=[];lb.P.forEach((p,j)=>{p.t=j<na?(j<nA?0:(cr?1:(j%2?2:1))):((j-na)<(na-nA)?2:3);lbStep(p,sp,.05,1);it.push({p,j,t:p.t,q:lbProj(p)})});
+ const ni=Math.round(5*Math.max(0,m.O-(1-A)*(cr?1:.5)));for(let k=0;k<ni&&k<lb.I.length;k++){const p=lb.I[k];lbStep(p,sp,.05,1);it.push({t:4,q:lbProj(p)})}
+ it.sort((u,v)=>u.q.z-v.q.z);lb.pr=[];
+ it.forEach(o=>{const q=o.q,r=(o.t===4?.035:.075)*118*q.k;x.globalAlpha=Math.max(.45,Math.min(1,.75+q.z*.35));
+  if(o.t===4){x.strokeStyle=fc;x.lineWidth=1.3;x.beginPath();x.arc(q.x,q.y,r,0,7);x.stroke();x.globalAlpha=1;return}
+  const g=x.createRadialGradient(q.x-r*.35,q.y-r*.35,r*.1,q.x,q.y,r);g.addColorStop(0,'rgba(255,255,255,.9)');g.addColorStop(.45,col[o.t]);g.addColorStop(1,col[o.t]);
+  x.fillStyle=g;x.beginPath();x.arc(q.x,q.y,r,0,7);x.fill();x.globalAlpha=1;lb.pr.push({j:o.j,x:q.x,y:q.y,r});
+  if(lb.sel===o.j){x.strokeStyle=fc;x.lineWidth=3;x.beginPath();x.arc(q.x,q.y,r+5,0,7);x.stroke()}});
+ lb.fx=lb.fx.filter(f=>f.l>0);lb.fx.forEach(f=>{const q=lbProj(lb.P[f.j]);x.strokeStyle=`rgba(230,150,0,${f.l})`;x.lineWidth=3;x.beginPath();x.arc(q.x,q.y,10+34*(1-f.l),0,7);x.stroke();x.fillStyle=`rgba(230,150,0,${f.l})`;x.font='bold 14px system-ui';x.fillText('H⁻',q.x-9,q.y-16-20*(1-f.l));f.l-=.03});
+ x.globalAlpha=.55;x.strokeStyle=fc;x.lineWidth=2;[[0,1],[1.3,.35],[1.9,.35]].forEach(([y,r])=>{path(ring(y,r));x.stroke()});
+ x.globalAlpha=.3;for(let a=0;a<8;a++){const t=a/8*6.283,P=[[0,1],[1.3,.35],[1.9,.35]].map(([y,r])=>lbProj({x:r*Math.cos(t),y,z:r*Math.sin(t)}));x.beginPath();P.forEach((q,k)=>k?x.lineTo(q.x,q.y):x.moveTo(q.x,q.y));x.stroke()}x.globalAlpha=1}
+function lbPlot(i){const x=lb.cp,m=lb.m,r=m.r,e=r.length-1,w=300,h=320,X=k=>36+(w-48)*k/e,Y=v=>h-34-(h-60)*v,f=m.cr?1:2,fc=fcl();
+ x.clearRect(0,0,w,h);x.strokeStyle=fc;x.fillStyle=fc;x.lineWidth=1.5;x.font='13px system-ui';x.beginPath();x.moveTo(36,10);x.lineTo(36,h-34);x.lineTo(w-8,h-34);x.stroke();
+ x.fillText('0',20,h-30);x.fillText('1',20,Y(1)+4);x.fillText('0 min',30,h-14);x.fillText(Math.round(r[e][0])+' min',w-62,h-14);x.fillText('fracción del aldehído inicial',44,14);
+ if(!m.cr){x.setLineDash([6,5]);x.beginPath();x.moveTo(36,Y(.5));x.lineTo(w-8,Y(.5));x.stroke();x.setLineDash([]);x.fillText('techo 50 %',w-90,Y(.5)-5)}
+ if(lb.prev){x.strokeStyle='#8a97a3';x.setLineDash([2,4]);x.lineWidth=2;x.beginPath();for(let k=0;k<=e;k+=8){const y=Y(lb.prev[Math.min(k,lb.prev.length-1)][1]);k?x.lineTo(X(k),y):x.moveTo(X(k),y)}x.stroke();x.setLineDash([]);x.fillStyle=fc;x.fillText('··· aldehído antes',w-130,28)}
+ [[k=>r[k][1],lbC()[0]],[k=>(1-r[k][1])/f,lbC()[1]],[k=>(1-r[k][1])/f,lbC()[2]]].forEach(([fn,c],j)=>{x.strokeStyle=c;x.lineWidth=j===2?2:3;x.setLineDash(j===2?[3,4]:[]);x.beginPath();for(let k=0;k<=e;k+=8){k?x.lineTo(X(k),Y(fn(k))):x.moveTo(X(k),Y(fn(k)))}x.stroke()});
+ x.setLineDash([]);x.strokeStyle=fc;x.lineWidth=1;x.beginPath();x.moveTo(X(i),10);x.lineTo(X(i),h-34);x.stroke()}
+function lbSpec(i){const x=lb.cs,m=lb.m,A=m.r[i][1],al=(1-A)/(m.cr?1:2),d=$('#lbd').checked,ac=$('#lba').checked&&!m.cr,S=+$('#lbs').value,w=700,h=230,fc=fcl(),
+ pk=[[7.6,.4,S?4:5,'#8a97a3','Ar'],[[10,10.15,9.88][S],.06,d?0:A,lbC()[0],'CHO'],[[4.7,4.8,4.6][S],.06,d?0:2*al,lbC()[1],'CH₂']];
+ if(S===2)pk.push([3.85,.06,3,'#8a97a3','OMe']);if(ac)pk.push([12.6,.3,al,lbC()[2],'COOH']);
+ x.clearRect(0,0,w,h);const P0=13.5,P1=3,Xp=p=>20+(w-40)*(P0-p)/(P0-P1);
+ x.strokeStyle=fc;x.fillStyle=fc;x.lineWidth=1.5;x.font='14px system-ui';x.beginPath();x.moveTo(20,h-34);x.lineTo(w-20,h-34);x.stroke();
+ [12,10,8,6,4].forEach(p=>{x.fillText(p,Xp(p)-6,h-14)});x.fillText('δ (ppm)',w-80,h-14);
+ pk.forEach(([p,wd,n,c,l])=>{x.strokeStyle=c;x.lineWidth=2.5;x.beginPath();for(let q=0;q<=300;q++){const pp=P0-(P0-P1)*q/300;let y=0;y+=n*wd/((pp-p)**2+wd*wd);const Y=h-34-y*150/34;q?x.lineTo(Xp(pp),Y):x.moveTo(Xp(pp),Y)}x.stroke();x.fillStyle=c;x.fillText(l,Xp(p)-10,22)});
+ $('#lbsn').innerHTML=d?'Con <b>ArCDO</b> no hay H en el carbono carbonílico: el <b>CH₂ no aparece</b> en el alcohol (ArCD₂OH). Es la prueba de que los dos D del carbono viajaron desde el aldehído (hidruro), no desde el disolvente.':'El pico CHO se apaga y el CH₂ crece, mientras el anillo no cambia. '+(m.cr?'En la cruzada el formiato no es un ácido aromático, así que no sale pico de COOH.':'Marca «Acidificar» para ver el COOH del ácido aislado.')}
+function lbTlc(i){const x=lb.ct,m=lb.m,A=m.r[i][1],al=(1-A)/(m.cr?1:2),q=al/(m.cr?1:.5);x.clearRect(0,0,320,200);x.fillStyle='#f4f6f0';x.fillRect(10,10,300,180);x.strokeStyle='#999';x.beginPath();x.moveTo(10,165);x.lineTo(310,165);x.stroke();
+ const sp=(cx,y,a)=>{x.beginPath();x.arc(cx,y,9,0,7);x.fillStyle=`rgba(40,50,60,${a})`;x.fill()};sp(60,65,1);sp(260,117,1);sp(160,65,A);sp(160,117,q);if(!m.cr)sp(160,162,q);
+ x.fillStyle='#333';x.font='13px system-ui';x.fillText('ArCHO',34,184);x.fillText('mezcla',136,184);x.fillText('alcohol',234,184)}
+const ISC=['Mezcla de reacción: agua, NaOH, alcohol y carboxilato (la sal es soluble en agua).','Se añade éter y se agita: el alcohol, neutro, pasa al éter (arriba); el carboxilato iónico se queda en el agua (abajo). Se repite con porciones pequeñas.','Se separan las fases: la acuosa (con la sal) va a un vaso; el éter con el alcohol queda aparte.','Se acidifica la fase acuosa con HCl (pH &lt; 2, bajo el pKa ≈ 4): el carboxilato se protona y el ácido, poco soluble, precipita.','Se filtra el ácido (sólido) y se evapora el éter para obtener el alcohol. Resultado: los dos productos, separados.'];
+function lbIso(){const L=LS[+$('#lbs').value],s=lb.iso,cr=lb.m.cr,FN='M200 60Q260 8 320 60L292 190L272 214V246H248V214L228 190Z';
+ let g=`<defs><clipPath id="fc"><path d="${FN}"/></clipPath></defs>`;const T2=(x,y,v,c,a)=>`<text x="${x}" y="${y}" font-size="15" fill="${c||'var(--ink)'}" text-anchor="${a||'start'}">${v}</text>`;
+ g+=`<g clip-path="url(#fc)">`+(s===0?'<rect x="190" y="90" width="140" height="160" fill="rgba(57,73,171,.2)"/>':s===1?'<rect x="190" y="90" width="140" height="60" fill="rgba(178,106,0,.25)"/><rect x="190" y="150" width="140" height="100" fill="rgba(57,73,171,.2)"/>':'<rect x="190" y="90" width="140" height="60" fill="rgba(178,106,0,.25)"/>')+'</g>';
+ g+=`<path d="${FN}" fill="none" stroke="var(--ink)" stroke-width="3"/>`;
+ if(s===0)g+=T2(345,150,'agua + base + '+L.al.split(' ')[0]+'…','var(--in)');
+ if(s===1)g+=T2(340,122,'éter: '+L.al,'var(--am)')+T2(340,200,'agua: '+(cr?'formiato de sodio':L.sa),'var(--in)');
+ if(s>=2){g+=T2(340,122,'éter: '+L.al,'var(--am)')+`<rect x="30" y="200" width="110" height="70" rx="8" fill="rgba(57,73,171,.2)" stroke="var(--ink)" stroke-width="3"/>`+T2(85,290,'vaso: '+(s>=3?(cr?'+ HCl: sin sólido':'+ HCl'):'fase acuosa'),'var(--in)','middle');
+  if(s>=3&&!cr)g+=[0,1,2,3,4,5,6,7,8].map(k=>`<circle cx="${45+k%5*16}" cy="${252+Math.floor(k/5)*9}" r="5" fill="var(--card)" stroke="var(--h)"/>`).join('')+T2(85,190,L.ac+' (sólido)','var(--h)','middle')}
+ if(s===4)g+=T2(340,150,'→ evaporar: '+L.al,'var(--oh)')+(cr?T2(85,172,'se descarta','var(--mute)','middle'):T2(85,172,'filtrar: '+L.ac,'var(--h)','middle'));
+ $('#lbis').innerHTML=g;$('#lbic').innerHTML='<b>Paso '+(s+1)+' de 5.</b> '+(cr&&s>=3?['Fase acuosa con formiato de sodio (HCO₂⁻): al acidificar daría ácido fórmico, que es soluble; no hay sólido que recoger. En la cruzada el coproducto es una sal sencilla que se descarta con el agua.','Se evapora el éter y queda el alcohol, el único producto de interés. Por eso la cruzada se elige cuando solo quieres el alcohol.'][s-3]:ISC[s]);$('#lbik').disabled=!s;$('#lbin').disabled=s===4}
+function lbGreen(){const m=lb.m,L=m.L,[a,o]=L.M,cr=m.cr,R=cr?a+70.03:2*a+40,E=R-o,both=$('#lbg2').value==='1',g=+$('#lbg1').value,i=Math.round(lb.f*(m.r.length-1)),cv=1-m.r[i][1],ns=Math.round(o/R*100),k=g/a*cv/(cr?1:2),ga=k*o,gc=k*E,i9=m.r.findIndex(p=>p[1]<.1),f=v=>v.toFixed(1).replace('.',','),
+ co=cr?'formiato de sodio':L.sa,sq=Array.from({length:100},(_,j)=>`<span style="aspect-ratio:1;border-radius:3px;background:${j<ns?'var(--oh)':both?'var(--h)':'var(--am)'};opacity:${j<ns||both?1:.55}"></span>`).join('');
+ $('#lbg1v').textContent=g+' g';
+ $('#lbg').innerHTML=`<h3>¿A dónde va cada gramo? · ${L.n}, versión ${cr?'cruzada':'simple'}</h3><p class="sub">Cada cuadrito es 1 % de la masa de los reactivos (aldehído${cr?', HCHO':''} y NaOH).</p><div style="display:grid;grid-template-columns:repeat(10,1fr);gap:3px;max-width:300px">${sq}</div>
+<p>${cp(L.al+': '+ns+' %','--oh')}${cp((both?co+' (aprovechado): ':co+' (residuo): ')+(100-ns)+' %',both?'--h':'--am')}</p>
+<div class="stt"><div class="sc" style="background:#0B7A75"><div class="big">${f(ga)} g</div>de ${L.al}</div><div class="sc" style="background:${both?'#C2185B':'#B26A00'}"><div class="big">${f(gc)} g</div>${both?'del otro producto':'de residuo'}</div><div class="sc" style="background:#3949AB"><div class="big">${both?'0,0':f(E/o)} g</div>de residuo por g de alcohol</div></div>
+<p>Con <b>${g} g</b> de aldehído y la conversión del matraz (<b>${Math.round(cv*100)} %</b>; mueve el tiempo en «Matraz» y míralo cambiar).</p>
+<div class="box"><b>¿Y la base y la temperatura?</b> Con [NaOH] = ${m.O} M y ${$('#lbT').value} °C, el modelo tarda ≈ <b>${i9<0?'más de '+Math.round(m.r[m.r.length-1][0]):Math.round(m.r[i9][0])} min</b> en consumir el 90 % del aldehído. Esas condiciones cambian el <b>tiempo y la energía</b>, pero no la masa de residuo: esa la fija la ecuación química. Por eso los cuadritos no se mueven con la base.</div>
+<p class="sub">Las rutas suaves (LiBr/Et₃N a t.a., γ-Al₂O₃ con microondas) bajan la severidad de las condiciones, no la economía atómica.</p>`}
+let lt=0;(function lbLoop(t){const d=lt?(t-lt)/1000:0;lt=t;if(cur===9&&lb.m){if(lb.play){lb.f=Math.min(1,lb.f+d/22);if(lb.f>=1){lb.play=false;$('#lbpl').textContent='▶ Reproducir'}$('#lbtm').value=lb.f*1000}if(lb.tab===0||lb.play)lbFrame()}requestAnimationFrame(lbLoop)})(0);
+Q.forEach(x=>{const c=x.o[x.a];x.o=x.o.map(v=>[Math.random(),v]).sort((p,q)=>p[0]-q[0]).map(p=>p[1]);x.a=x.o.indexOf(c)});
 tyr();show(3);ver();rq(0);
 </script></body></html>
